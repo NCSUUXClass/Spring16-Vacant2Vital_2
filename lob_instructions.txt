@@ -1,0 +1,13 @@
+1) Extract the contents to a folder and run testLob.php
+2) Check the postcard generated on Lob with the credentials:
+Email : ssharm14@ncsu.edu
+Password : test1234
+
+If this does not work/error is generated, install composer :
+1) https://getcomposer.org/download/
+2) Delete the existing vendor folder, composer.json and composer.lock
+3) Open cmd and type : composer require lob/lob-php:1.4.*
+
+Now, load the php file and check the website for the generated postcard.
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./tests/bootstrap.php"
+         colors="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
+
+    <php>
+        <const name="LOB_TEST_API_KEY" value="test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc"/>
+    </php>
+
+    <testsuites>
+        <testsuite>
+            <directory>./tests/Lob/Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src/Lob</directory>
+            <exclude>
+                <file>./src/Lob/ResourceTest.php</file>
+                <directory suffix="Interface.php">./src/Lob</directory>
+                <directory>./src/Lob/Exception</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <logging>
+      <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+</phpunit>
