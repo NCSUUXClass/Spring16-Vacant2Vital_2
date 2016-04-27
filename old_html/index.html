@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 50%;
+        height: 50%;
+      }
+      body, html {
+  height: 100%;
+}
+
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+
+.messagepop {
+  background-color:#FFFFFF;
+  border:1px solid #999999;
+  cursor:default;
+  display:none;
+  margin-top: 10px;
+  position:absolute;
+  text-align:left;
+  width:394px;
+  z-index:50;
+  padding: 15px 15px 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.messagepop p, .messagepop.div {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8px 0;
+  padding-bottom: 8px;
+}
+
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+<script>
+function deselect(e) {
+  $('.pop').slideFadeToggle(function() {
+    e.removeClass('selected');
+  });    
+}
+
+$(function() {
+  $('#contact').on('click', function() {
+    if($(this).hasClass('selected')) {
+      deselect($(this));               
+    } else {
+      $(this).addClass('selected');
+      $('.pop').slideFadeToggle();
+    }
+    return false;
+  });
+
+  $('.close').on('click', function() {
+    deselect($('#contact'));
+    return false;
+  });
+});
+
+$.fn.slideFadeToggle = function(easing, callback) {
+  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+};
+</script>
+  </head>
+  <body>
+
+<div class="messagepop pop1">
+  <form method="post" id="request_info" action="/messages">
+    <p><input type="submit" value="Request Info" name="requestinfo" id="requestinfo"/> or <a class="close" href="/">Cancel</a></p>
+  </form>
+</div>
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E3a4RpuAOXjWlv5DINU_DtyRqnI" width="1000" height="800"></iframe>
+
+<div class="messagepop pop">
+  <form method="post" id="new_message" action="/messages">
+<p><label for="name">Your Name</label><input type="text" size="30" name="name" id="name" /></p>    
+<p><label for="email">Your email</label><input type="text" size="30" name="email" id="email" /></p>
+    <p><label for="message">What type of project would you like to work on?</label><textarea rows="6" name="message" id="message" cols="35"></textarea></p>
+<p><label for="tenure">Tenure of project?</label><input type="text" size="40" name="tenure" id="tenure" /></p>    </p>
+    <p><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></p>
+  </form>
+</div>
+
+<a href="/contact" id="contact">Request Info</a>
+  </body>
+</html>
