@@ -27,10 +27,9 @@ $lob = new \Lob\Lob('test_e17cf73fd6ce6ee1c68e9e85bae7adf0b25');
 $to_address = $lob->addresses()->create(array(
   'name'          => $owner,
   'address_line1' => $add_one,
-  'address_line2' => $add_two,
-  'address_city'  => 'San Francisco',
-  'address_state' => 'CA',
-  'address_zip'   => '27518'
+  'address_city'  => 'Raleigh',
+  'address_state' => 'NC',
+  'address_zip'   => '27606'
 ));
 
 $from_address = $lob->addresses()->create(array(
